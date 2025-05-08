@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// ProviderScope is required to enable Riverpod. It stores all the providers and makes them accessible throughout the app.
+// This wraps your app in a scope where providers can be watched and read.
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -20,8 +22,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final appCount = Provider<int>((ref) {
-  return 1;
+final appCount = StateProvider<int>((ref) {
+  return 3;
 });
 
 class MyHomePage extends ConsumerWidget {
@@ -29,7 +31,8 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(appCount);
+    // ref.watch(appCount) listens to the appCount provider, and if it ever changes, this widget will rebuild.
+    int count = ref.watch(appCount);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -46,7 +49,9 @@ class MyHomePage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          ref.read(appCount.notifier).state++;
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
