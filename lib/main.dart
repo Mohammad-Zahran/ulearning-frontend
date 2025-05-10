@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// This creates a mutable provider with an initial value of 3.
+// Unlike the previous Provider, StateProvider allows you to change the state using a notifier (ref.read(...).notifier).
 final appCount = StateProvider<int>((ref) {
   return 3;
 });
@@ -48,13 +50,38 @@ class MyHomePage extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read(appCount.notifier).state++;
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const SecondPage(),
+                ),
+              );
+            },
+            tooltip: 'Increment',
+            child: const Icon(Icons.arrow_right_rounded),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              ref.read(appCount.notifier).state++;
+            },
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(), body: Text("count_value"));
   }
 }
