@@ -54,6 +54,7 @@ class MyHomePage extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
+            heroTag: "one",
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -65,6 +66,7 @@ class MyHomePage extends ConsumerWidget {
             child: const Icon(Icons.arrow_right_rounded),
           ),
           FloatingActionButton(
+            heroTag: "two",
             onPressed: () {
               ref.read(appCount.notifier).state++;
             },
@@ -77,11 +79,15 @@ class MyHomePage extends ConsumerWidget {
   }
 }
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends ConsumerWidget {
   const SecondPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(), body: Text("count_value"));
+  Widget build(BuildContext context, WidgetRef ref) {
+    int count = ref.watch(appCount);
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(child: Text("$count", style: TextStyle(fontSize: 30))),
+    );
   }
 }
