@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_frontend/pages/welcome/welcome.dart';
 
 // ProviderScope is required to enable Riverpod. It stores all the providers and makes them accessible throughout the app.
 // This wraps your app in a scope where providers can be watched and read.
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(),
+      home: const Welcome(),
     );
   }
 }

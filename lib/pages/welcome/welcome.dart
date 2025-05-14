@@ -5,6 +5,21 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          PageView(
+            children: [
+              SizedBox(
+                width: 345,
+                height: 345,
+                child: Image.asset("assets/images/reading.png"),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
