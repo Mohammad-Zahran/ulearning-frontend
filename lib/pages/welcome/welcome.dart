@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
+import 'package:ulearning_frontend/pages/welcome/widgets.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -13,28 +13,26 @@ class Welcome extends StatelessWidget {
           PageView(
             scrollDirection: Axis.horizontal,
             children: [
-              // first Page
-              Column(
-                children: [
-                  Image.asset(
-                    "assets/images/reading.png",
-                    fit: BoxFit.fitWidth,
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 15),
-                    child: text24Normal(text: "First see Learning"),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 15),
-                    padding: EdgeInsets.only(left: 30, right: 30),
-                    child: text16Normal(
-                      text:
-                          "Forget about of paper all knowledge in one learning",
-                    ),
-                  ),
-                ],
+              // first page
+              appOnboardingPage(
+                imagePath: "assets/images/reading.png",
+                title: "First See Learning",
+                subTitle:
+                    "Forget about the paper, now learning all in one place",
+              ),
+              // second page
+              appOnboardingPage(
+                imagePath: "assets/images/man.png",
+                title: "Connect With Everyone",
+                subTitle:
+                    "Always keep in touch with your tutor and friends. Let's get connected",
+              ),
+              // third page
+              appOnboardingPage(
+                imagePath: "assets/images/boy.png",
+                title: "Always Fascinated Learning",
+                subTitle:
+                    "Anywhere, anytime. The time is at your discretion. So study wherever you can",
               ),
             ],
           ),
