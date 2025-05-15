@@ -13,13 +13,27 @@ class Welcome extends StatelessWidget {
           PageView(
             scrollDirection: Axis.horizontal,
             children: [
+              // first Page
               Column(
                 children: [
                   Image.asset(
                     "assets/images/reading.png",
                     fit: BoxFit.fitWidth,
                   ),
-                  text24Normal(),
+
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    child: text24Normal(text: "First see Learning"),
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(left: 30, right: 30),
+                    child: text16Normal(
+                      text:
+                          "Forget about of paper all knowledge in one learning",
+                    ),
+                  ),
                 ],
               ),
             ],
