@@ -20,6 +20,16 @@ Widget appOnboardingPage({
         padding: EdgeInsets.only(left: 30, right: 30),
         child: text16Normal(text: subTitle),
       ),
+      _nextButton(),
     ],
+  );
+}
+
+Widget _nextButton() {
+  return Container(
+    width: 325,
+    height: 50,
+    color: Colors.blue,
+    margin: EdgeInsets.only(top: 100, left: 25, right: 25),
   );
 }
