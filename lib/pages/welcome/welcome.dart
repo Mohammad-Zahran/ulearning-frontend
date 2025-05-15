@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -18,14 +19,7 @@ class Welcome extends StatelessWidget {
                     "assets/images/reading.png",
                     fit: BoxFit.fitWidth,
                   ),
-                  const Text(
-                    "First See Learning",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 24,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
+                  text24Normal(),
                 ],
               ),
             ],
