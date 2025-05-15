@@ -10,11 +10,23 @@ class Welcome extends StatelessWidget {
       body: Stack(
         children: [
           PageView(
+            scrollDirection: Axis.horizontal,
             children: [
-              SizedBox(
-                width: 345,
-                height: 345,
-                child: Image.asset("assets/images/reading.png"),
+              Column(
+                children: [
+                  Image.asset(
+                    "assets/images/reading.png",
+                    fit: BoxFit.fitWidth,
+                  ),
+                  const Text(
+                    "First See Learning",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
