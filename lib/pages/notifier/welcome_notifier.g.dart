@@ -6,22 +6,19 @@ part of 'welcome_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$indexDotProviderHash() => r'e995707d5f94452e5baa38fbee568aac0667da64';
+String _$indexDotHash() => r'e407c19e35a91274d4ef23f17c8ec0cedde72385';
 
-/// See also [IndexDotProvider].
-@ProviderFor(IndexDotProvider)
-final indexDotProviderProvider =
-    AutoDisposeNotifierProvider<IndexDotProvider, int>.internal(
-      IndexDotProvider.new,
-      name: r'indexDotProviderProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$indexDotProviderHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+/// See also [IndexDot].
+@ProviderFor(IndexDot)
+final indexDotProvider = AutoDisposeNotifierProvider<IndexDot, int>.internal(
+  IndexDot.new,
+  name: r'indexDotProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$indexDotHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-typedef _$IndexDotProvider = AutoDisposeNotifier<int>;
+typedef _$IndexDot = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
