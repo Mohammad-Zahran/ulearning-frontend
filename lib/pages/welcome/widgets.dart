@@ -35,7 +35,7 @@ Widget _nextButton(int index, PageController controller) {
         controller.animateToPage(
           index,
           duration: Duration(milliseconds: 300),
-          curve: Curves.bounceIn,
+          curve: Curves.linear,
         );
       }
     },
