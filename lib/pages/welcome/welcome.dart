@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:ulearning_frontend/pages/welcome/widgets.dart';
 
@@ -16,7 +17,9 @@ class Welcome extends StatelessWidget {
           body: Container(
             margin: EdgeInsets.only(top: 30),
             child: Stack(
+              alignment: Alignment.topCenter,
               children: [
+                // showing our three welcome pages
                 PageView(
                   controller: _controller,
                   scrollDirection: Axis.horizontal,
@@ -49,6 +52,21 @@ class Welcome extends StatelessWidget {
                       index: 3,
                     ),
                   ],
+                ),
+                // for showing dots
+                Positioned(
+                  bottom: 100,
+                  child: DotsIndicator(
+                    dotsCount: 3,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    decorator: DotsDecorator(
+                      size: const Size.square(9.0),
+                      activeSize: const Size(24.0, 8.0),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
