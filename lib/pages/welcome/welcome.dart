@@ -1,14 +1,21 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_frontend/pages/welcome/widgets.dart';
 
-class Welcome extends StatelessWidget {
+// This creates a mutable provider with an initial value of 0.
+final indexProvider = StateProvider<int>((ref) => 0);
+
+class Welcome extends ConsumerWidget {
   Welcome({super.key});
 
+  // This is the page controller that will be used to control the PageView.
   final PageController _controller = PageController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // This listens to the indexProvider and rebuilds the widget when the index changes.
+    final index = ref.watch(indexProvider);
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -21,6 +28,9 @@ class Welcome extends StatelessWidget {
               children: [
                 // showing our three welcome pages
                 PageView(
+                  onPageChanged: (value) {
+                    ref.read(indexProvider.notifier).state = value;
+                  },
                   controller: _controller,
                   scrollDirection: Axis.horizontal,
                   children: [
@@ -57,6 +67,7 @@ class Welcome extends StatelessWidget {
                 Positioned(
                   bottom: 100,
                   child: DotsIndicator(
+                    position: index.toDouble(),
                     dotsCount: 3,
                     mainAxisAlignment: MainAxisAlignment.center,
                     decorator: DotsDecorator(
