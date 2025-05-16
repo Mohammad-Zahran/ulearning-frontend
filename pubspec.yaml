@@ -37,6 +37,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   dots_indicator: ^4.0.1
   riverpod_generator: ^2.6.5
+  build_runner: ^2.4.15
 
 dev_dependencies:
   flutter_test:
