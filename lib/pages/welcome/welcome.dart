@@ -63,7 +63,7 @@ class Welcome extends ConsumerWidget {
                 ),
                 // for showing dots
                 Positioned(
-                  bottom: 100,
+                  bottom: 50,
                   child: DotsIndicator(
                     position: index.toDouble(),
                     dotsCount: 3,

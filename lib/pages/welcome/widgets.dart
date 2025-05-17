@@ -29,6 +29,7 @@ Widget appOnboardingPage(
 }
 
 Widget _nextButton(int index, PageController controller) {
+  final isLastPage = index == 3;
   return GestureDetector(
     onTap: () {
       if (index < 3) {
@@ -44,7 +45,12 @@ Widget _nextButton(int index, PageController controller) {
       height: 50,
       margin: EdgeInsets.only(top: 100, left: 25, right: 25),
       decoration: appBoxShadow(),
-      child: Center(child: text16Normal(text: "next", color: Colors.white)),
+      child: Center(
+        child: text16Normal(
+          text: isLastPage ? "Get Started" : "Next",
+          color: Colors.white,
+        ),
+      ),
     ),
   );
 }
