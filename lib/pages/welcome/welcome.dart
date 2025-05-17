@@ -35,6 +35,7 @@ class Welcome extends ConsumerWidget {
                     // first page
                     appOnboardingPage(
                       _controller,
+                      context,
                       imagePath: "assets/images/reading.png",
                       title: "First See Learning",
                       subTitle:
@@ -44,6 +45,7 @@ class Welcome extends ConsumerWidget {
                     // second page
                     appOnboardingPage(
                       _controller,
+                      context,
                       imagePath: "assets/images/man.png",
                       title: "Connect With Everyone",
                       subTitle:
@@ -53,6 +55,7 @@ class Welcome extends ConsumerWidget {
                     // third page
                     appOnboardingPage(
                       _controller,
+                      context,
                       imagePath: "assets/images/boy.png",
                       title: "Always Fascinated Learning",
                       subTitle:

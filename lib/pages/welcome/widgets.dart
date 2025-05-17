@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_frontend/common/widgets/app_shadow.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
+import 'package:ulearning_frontend/pages/sign_in/sign_in.dart';
 
 Widget appOnboardingPage(
-  PageController controller, {
+  PageController controller,
+  BuildContext context, {
   String imagePath = "assets/images/reading.png",
   String title = "",
   String subTitle = "",
@@ -13,43 +15,48 @@ Widget appOnboardingPage(
     children: [
       Image.asset(imagePath, fit: BoxFit.fitWidth),
 
-      Container(
-        margin: EdgeInsets.only(top: 15),
-        child: text24Normal(text: title),
-      ),
+      SizedBox(height: 15),
+      text24Normal(text: title),
 
-      Container(
-        margin: EdgeInsets.only(top: 15),
-        padding: EdgeInsets.only(left: 30, right: 30),
+      SizedBox(height: 15),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: text16Normal(text: subTitle),
       ),
-      _nextButton(index, controller),
+
+      // pass (controller, context, index) in that exact order:
+      _nextButton(controller, context, index),
     ],
   );
 }
 
-Widget _nextButton(int index, PageController controller) {
+// signature now matches the order you pass it:
+Widget _nextButton(PageController controller, BuildContext context, int index) {
   final isLastPage = index == 3;
   return GestureDetector(
     onTap: () {
       if (index < 3) {
         controller.animateToPage(
-          index,
+          index, // zero-based; if you want to go to next, maybe index + 1
           duration: Duration(milliseconds: 300),
           curve: Curves.linear,
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SignIn()),
         );
       }
     },
     child: Container(
       width: 325,
       height: 50,
-      margin: EdgeInsets.only(top: 100, left: 25, right: 25),
+      margin: const EdgeInsets.only(top: 100, left: 25, right: 25),
       decoration: appBoxShadow(),
-      child: Center(
-        child: text16Normal(
-          text: isLastPage ? "Get Started" : "Next",
-          color: Colors.white,
-        ),
+      alignment: Alignment.center,
+      child: text16Normal(
+        text: isLastPage ? "Get Started" : "Next",
+        color: Colors.white,
       ),
     ),
   );
