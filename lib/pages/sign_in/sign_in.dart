@@ -6,6 +6,14 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(),
+          backgroundColor: Colors.white,
+          body: Center(child: Text("Sign in page")),
+        ),
+      ),
+    );
   }
 }
