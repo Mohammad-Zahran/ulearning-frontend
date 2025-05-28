@@ -12,7 +12,11 @@ class SignIn extends StatelessWidget {
         child: Scaffold(
           appBar: buildAppbar(),
           backgroundColor: Colors.white,
-          body: Center(child: Text("Sign in page")),
+          body: Column(
+            children: [
+              thirdPartyLogin(),
+            ],
+          ),
         ),
       ),
     );
