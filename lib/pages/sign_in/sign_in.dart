@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ulearning_frontend/pages/sign_in/widgets/sign_in_widgets.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -9,7 +10,7 @@ class SignIn extends StatelessWidget {
     return Container(
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(),
+          appBar: buildAppbar(),
           backgroundColor: Colors.white,
           body: Center(child: Text("Sign in page")),
         ),
