@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_frontend/pages/sign_in/sign_in.dart';
 import 'package:ulearning_frontend/pages/welcome/welcome.dart';
 
 // ProviderScope is required to enable Riverpod. It stores all the providers and makes them accessible throughout the app.
@@ -17,8 +18,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: Welcome(),
+      initialRoute: "/",
+      routes: {"/": (context) => Welcome(), "/signIn": (context) => SignIn()},
     );
   }
 }
