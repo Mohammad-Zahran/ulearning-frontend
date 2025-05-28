@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
 import 'package:ulearning_frontend/pages/sign_in/widgets/sign_in_widgets.dart';
 
 class SignIn extends StatelessWidget {
@@ -15,6 +16,8 @@ class SignIn extends StatelessWidget {
           body: Column(
             children: [
               thirdPartyLogin(),
+              // more login options can be added here
+              text14Normal(text: "Or use your email email account to login"),
             ],
           ),
         ),
