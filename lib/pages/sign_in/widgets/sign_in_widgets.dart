@@ -36,3 +36,10 @@ Widget _loginButton(String imagePath) {
     child: SizedBox(width: 40, height: 40, child: Image.asset(imagePath)),
   );
 }
+
+Widget appTextField({String text = ""}) {
+  return Container(
+    padding: EdgeInsets.only(left: 25, right: 25),
+    child: Column(children: [text14Normal(text: text)]),
+  );
+}
