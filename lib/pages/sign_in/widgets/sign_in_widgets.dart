@@ -40,6 +40,12 @@ Widget _loginButton(String imagePath) {
 Widget appTextField({String text = ""}) {
   return Container(
     padding: EdgeInsets.only(left: 25, right: 25),
-    child: Column(children: [text14Normal(text: text)]),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        text14Normal(text: text),
+        Container(width: 325, height: 50, color: Colors.red),
+      ],
+    ),
   );
 }
