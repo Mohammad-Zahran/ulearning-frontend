@@ -9,6 +9,7 @@ import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
   put child in the given space.
 */
 
+// This widget is used to create the app bar for the login page
 AppBar buildAppbar() {
   return AppBar(
     bottom: PreferredSize(
@@ -19,9 +20,10 @@ AppBar buildAppbar() {
   );
 }
 
+// This widget is used to create a row of third-party login buttons
 Widget thirdPartyLogin() {
   return Container(
-    margin: EdgeInsets.only(left: 80, right: 80, top: 40, bottom: 20),
+    margin: EdgeInsets.only(left: 80, right: 80, top: 40, bottom: 10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -33,13 +35,20 @@ Widget thirdPartyLogin() {
   );
 }
 
+// This widget is used to create a button for third-party login
 Widget _loginButton(String imagePath) {
   return GestureDetector(
     child: SizedBox(width: 40, height: 40, child: Image.asset(imagePath)),
   );
 }
 
-Widget appTextField({String text = "", String iconName = ""}) {
+// This widget is used to create a text field with an icon
+Widget appTextField({
+  String text = "",
+  String iconName = "",
+  String hintText = "Type in your info",
+  bool obscureText = false,
+}) {
   return Container(
     padding: EdgeInsets.only(left: 25, right: 25),
     child: Column(
@@ -50,7 +59,46 @@ Widget appTextField({String text = "", String iconName = ""}) {
           width: 325,
           height: 50,
           decoration: appBoxDecorationTextField(),
-          child: Row(children: [Container(child: appImage(imagePath: iconName))]),
+          // row contains icon and text field
+          child: Row(
+            children: [
+              // for showing icons
+              Container(
+                margin: EdgeInsets.only(left: 17),
+                child: appImage(imagePath: iconName),
+              ),
+              // our text field
+              SizedBox(
+                width: 280,
+                height: 50,
+                child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                    hintText: hintText,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                    // default border without any input
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                    // focused border is with input
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                  ),
+                  onChanged: (value) {},
+                  maxLines: 1,
+                  autocorrect: false,
+                  // by default it is false
+                  obscureText: obscureText,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     ),
