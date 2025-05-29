@@ -25,10 +25,20 @@ class SignIn extends StatelessWidget {
               ),
               SizedBox(height: 50),
               // email text box
-              appTextField(text: "Email", iconName: "assets/icons/user.png"),
+              appTextField(
+                text: "Email",
+                iconName: "assets/icons/user.png",
+                hintText: "Enter your email address",
+                obscureText: false,
+              ),
               SizedBox(height: 50),
               // password text box
-              appTextField(text: "Password", iconName: "assets/icons/lock.png"),
+              appTextField(
+                text: "Password",
+                iconName: "assets/icons/lock.png",
+                hintText: "Enter your password",
+                obscureText: true,
+              ),
               SizedBox(height: 20),
             ],
           ),
