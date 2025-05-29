@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_frontend/common/utils/app_colors.dart';
+import 'package:ulearning_frontend/common/widgets/app_shadow.dart';
+import 'package:ulearning_frontend/common/widgets/image_widgets.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
 
 /*
@@ -37,14 +39,19 @@ Widget _loginButton(String imagePath) {
   );
 }
 
-Widget appTextField({String text = ""}) {
+Widget appTextField({String text = "", String iconName = ""}) {
   return Container(
     padding: EdgeInsets.only(left: 25, right: 25),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         text14Normal(text: text),
-        Container(width: 325, height: 50, color: Colors.red),
+        Container(
+          width: 325,
+          height: 50,
+          decoration: appBoxDecorationTextField(),
+          child: Row(children: [Container(child: appImage(imagePath: iconName))]),
+        ),
       ],
     ),
   );
