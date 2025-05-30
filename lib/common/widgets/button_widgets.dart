@@ -17,6 +17,7 @@ Widget appButton({
       // isLogin true then send primaryElement color else primaryBackground color
       decoration: appBoxShadow(
         color: isLogin ? AppColors.primaryElement : AppColors.primaryBackground,
+        border: Border.all(color: AppColors.primaryFourElementText),
       ),
       child: Center(
         child: text16Normal(
