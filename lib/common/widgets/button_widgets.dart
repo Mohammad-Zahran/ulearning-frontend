@@ -4,6 +4,7 @@ import 'package:ulearning_frontend/common/utils/app_colors.dart';
 import 'package:ulearning_frontend/common/widgets/app_bar.dart';
 import 'package:ulearning_frontend/common/widgets/app_shadow.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
+import 'package:ulearning_frontend/pages/sign_up/sign_up.dart';
 
 Widget appButton({
   double width = 325,
@@ -16,14 +17,7 @@ Widget appButton({
     onTap: () {
       Navigator.push(
         context!,
-        MaterialPageRoute(
-          builder:
-              (context) => Scaffold(
-                appBar: buildAppbar(),
-                body: Container(color: Colors.white),
-                backgroundColor: Colors.white,
-              ),
-        ),
+        MaterialPageRoute(builder: (context) => SignUp()),
       );
     },
     child: Container(
