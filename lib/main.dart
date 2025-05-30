@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => Welcome(),
         "/signIn": (context) => SignIn(),
-        "/signUp": (context) => SignUp(),
+        "/register": (context) => SignUp(),
       },
     );
   }

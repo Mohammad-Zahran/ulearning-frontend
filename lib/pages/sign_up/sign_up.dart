@@ -74,6 +74,7 @@ class SignUp extends StatelessWidget {
                     buttonName: "Register",
                     isLogin: true,
                     context: context,
+                    func: () => print("register"),
                   ),
                 ),
               ],

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_frontend/common/utils/app_colors.dart';
 import 'package:ulearning_frontend/common/widgets/app_shadow.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
-import 'package:ulearning_frontend/pages/sign_up/sign_up.dart';
 
 Widget appButton({
   double width = 325,
@@ -11,14 +10,10 @@ Widget appButton({
   String buttonName = "",
   bool isLogin = true,
   BuildContext? context,
+  void Function()? func,
 }) {
   return GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context!,
-        MaterialPageRoute(builder: (context) => SignUp()),
-      );
-    },
+    onTap: func,
     child: Container(
       width: width,
       height: height,

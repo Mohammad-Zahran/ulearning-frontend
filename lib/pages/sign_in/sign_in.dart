@@ -59,6 +59,7 @@ class SignIn extends StatelessWidget {
                     buttonName: "Register",
                     isLogin: false,
                     context: context,
+                    func: () => Navigator.pushNamed(context, "/register"),
                   ),
                 ),
               ],
