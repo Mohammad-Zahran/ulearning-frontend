@@ -1,16 +1,31 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:ulearning_frontend/common/utils/app_colors.dart';
 import 'package:ulearning_frontend/common/widgets/app_shadow.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
+import 'package:ulearning_frontend/pages/sign_in/widgets/sign_in_widgets.dart';
 
 Widget appButton({
   double width = 325,
   double height = 50,
   String buttonName = "",
   bool isLogin = true,
+  BuildContext? context,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context!,
+        MaterialPageRoute(
+          builder:
+              (context) => Scaffold(
+                appBar: buildAppbar(),
+                body: Container(color: Colors.white),
+                backgroundColor: Colors.white,
+              ),
+        ),
+      );
+    },
     child: Container(
       width: width,
       height: height,

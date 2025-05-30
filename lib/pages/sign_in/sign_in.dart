@@ -53,7 +53,11 @@ class SignIn extends StatelessWidget {
                 SizedBox(height: 20),
                 // app register button
                 Center(
-                  child: appButton(buttonName: "Register", isLogin: false),
+                  child: appButton(
+                    buttonName: "Register",
+                    isLogin: false,
+                    context: context,
+                  ),
                 ),
               ],
             ),
