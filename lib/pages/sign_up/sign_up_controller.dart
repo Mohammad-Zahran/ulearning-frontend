@@ -21,16 +21,24 @@ class SignUpController {
     String password = state.password;
     String rePassword = state.rePassword;
 
-    print("Your name is $name");
-    print("Your email is $email");
-    print("Your password is $password");
-    print("Your rePassword is $rePassword");
+    if (state.userName.isEmpty || name.isEmpty) {
+      toastInfo("Your name is empty");
+      return;
+    }
+
+    if (state.userName.length < 6 || name.length < 6) {
+      toastInfo("Your name is too short");
+      return;
+    }
+
+    if (state.email.isEmpty || email.isEmpty) {
+      toastInfo("Your email is empty");
+      return;
+    }
 
     if (state.password != state.rePassword) {
       toastInfo("Your passwords do not match");
-    } else {
-      // Here you can add the logic to handle the sign-up process, such as making an API call.
-      print("Sign up successful");
+      return;
     }
   }
 }
