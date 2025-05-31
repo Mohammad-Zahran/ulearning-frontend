@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_frontend/common/widgets/app_bar.dart';
 import 'package:ulearning_frontend/common/widgets/app_textfields.dart';
 import 'package:ulearning_frontend/common/widgets/button_widgets.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
+import 'package:ulearning_frontend/pages/sign_up/notifier/register_notifier.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends ConsumerWidget {
   const SignUp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Using the registerNotifierProvider to access the state and methods of RegisterNotifier
+    final regProvider = ref.watch(registerNotifierProvider);
+    // regProvider.
     return Container(
       child: SafeArea(
         child: Scaffold(
@@ -33,6 +38,11 @@ class SignUp extends StatelessWidget {
                   iconName: "assets/icons/user.png",
                   hintText: "Enter your user name",
                   obscureText: false,
+                  // Using the notifier to handle user name changes
+                  func:
+                      (value) => ref
+                          .read(registerNotifierProvider.notifier)
+                          .onUserNameChange(value),
                 ),
                 SizedBox(height: 20),
                 // email text box
@@ -41,6 +51,10 @@ class SignUp extends StatelessWidget {
                   iconName: "assets/icons/user.png",
                   hintText: "Enter your email address",
                   obscureText: false,
+                  func:
+                      (value) => ref
+                          .read(registerNotifierProvider.notifier)
+                          .onEmailChange(value),
                 ),
                 SizedBox(height: 20),
                 // password text box
@@ -49,6 +63,10 @@ class SignUp extends StatelessWidget {
                   iconName: "assets/icons/lock.png",
                   hintText: "Enter your Password",
                   obscureText: true,
+                  func:
+                      (value) => ref
+                          .read(registerNotifierProvider.notifier)
+                          .onPasswordChange(value),
                 ),
                 SizedBox(height: 20),
                 // confirm password text box
@@ -57,6 +75,10 @@ class SignUp extends StatelessWidget {
                   iconName: "assets/icons/lock.png",
                   hintText: "Enter your Confirm Password",
                   obscureText: true,
+                  func:
+                      (value) => ref
+                          .read(registerNotifierProvider.notifier)
+                          .onRePasswordChange(value),
                 ),
                 SizedBox(height: 20),
                 // terms and conditions text
@@ -74,7 +96,6 @@ class SignUp extends StatelessWidget {
                     buttonName: "Register",
                     isLogin: true,
                     context: context,
-                    func: () => print("register"),
                   ),
                 ),
               ],
