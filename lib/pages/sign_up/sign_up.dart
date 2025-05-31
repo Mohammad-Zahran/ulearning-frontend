@@ -18,7 +18,7 @@ class SignUp extends ConsumerWidget {
     return Container(
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppbar(),
+          appBar: buildAppbar(title: "Sign Up"),
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
