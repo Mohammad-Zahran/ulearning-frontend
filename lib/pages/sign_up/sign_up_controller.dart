@@ -1,3 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_frontend/common/widgets/popup_messages.dart';
 import 'package:ulearning_frontend/pages/sign_up/notifier/register_notifier.dart';
@@ -10,7 +13,7 @@ class SignUpController {
   // This allows the controller to access the state and methods of the notifier.
   SignUpController({required this.ref});
 
-  void handleSignUp() {
+  Future<void> handleSignUp() async {
     // Accessing the state of the RegisterNotifier using the ref
     // This allows you to read the current state of the registration process.
     var state = ref.read(registerNotifierProvider);
@@ -36,19 +39,37 @@ class SignUpController {
       return;
     }
 
-    if (state.password.isEmpty || password.isEmpty) {
+    if (state.password.isEmpty ||
+        password.isEmpty ||
+        state.password.isEmpty ||
+        password.isEmpty) {
       toastInfo("Your password is empty");
       return;
     }
 
-    if (state.password.isEmpty || password.isEmpty) {
-      toastInfo("Your password is empty");
-      return;
-    }
-
-    if (state.password != state.rePassword) {
+    if ((state.password != state.rePassword) || (password != rePassword)) {
       toastInfo("Your passwords do not match");
       return;
     }
+
+    var context = Navigator.of(ref.context);
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      if (kDebugMode) {
+        print(credential);
+      }
+
+      if (credential.user != null) {
+        await credential.user?.sendEmailVerification();
+        await credential.user?.updateDisplayName(name);
+        // get server photo url
+        // set user photo url to server
+        toastInfo(
+          "An email has been sent to verify your account. Please open that email and confirm your identity.",
+        );
+        context.pop();
+      }
+    } catch (e) {}
   }
 }
