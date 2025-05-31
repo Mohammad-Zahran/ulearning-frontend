@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_frontend/common/widgets/popup_messages.dart';
 import 'package:ulearning_frontend/pages/sign_up/notifier/register_notifier.dart';
 
 class SignUpController {
@@ -26,7 +27,7 @@ class SignUpController {
     print("Your rePassword is $rePassword");
 
     if (state.password != state.rePassword) {
-      print("Passwords do not match");
+      toastInfo("Your passwords do not match");
     } else {
       // Here you can add the logic to handle the sign-up process, such as making an API call.
       print("Sign up successful");

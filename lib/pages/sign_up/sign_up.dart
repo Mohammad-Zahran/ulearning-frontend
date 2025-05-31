@@ -6,6 +6,7 @@ import 'package:ulearning_frontend/common/widgets/app_textfields.dart';
 import 'package:ulearning_frontend/common/widgets/button_widgets.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
 import 'package:ulearning_frontend/pages/sign_up/notifier/register_notifier.dart';
+import 'package:ulearning_frontend/pages/sign_up/sign_up_controller.dart';
 
 class SignUp extends ConsumerWidget {
   const SignUp({super.key});
@@ -96,6 +97,9 @@ class SignUp extends ConsumerWidget {
                     buttonName: "Register",
                     isLogin: true,
                     context: context,
+                    func: () {
+                      SignUpController(ref: ref).handleSignUp();
+                    },
                   ),
                 ),
               ],
