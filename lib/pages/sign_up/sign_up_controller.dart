@@ -36,6 +36,16 @@ class SignUpController {
       return;
     }
 
+    if (state.password.isEmpty || password.isEmpty) {
+      toastInfo("Your password is empty");
+      return;
+    }
+
+    if (state.password.isEmpty || password.isEmpty) {
+      toastInfo("Your password is empty");
+      return;
+    }
+
     if (state.password != state.rePassword) {
       toastInfo("Your passwords do not match");
       return;
