@@ -1,0 +1,25 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "ulearning-app-c8c9b",
+          "appId": "1:64395569451:android:34c9507711953cc81f7d6e",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "ulearning-app-c8c9b",
+          "configurations": {
+            "android": "1:64395569451:android:34c9507711953cc81f7d6e",
+            "ios": "1:64395569451:ios:f12f1b883c50ab191f7d6e",
+            "macos": "1:64395569451:ios:f12f1b883c50ab191f7d6e",
+            "web": "1:64395569451:web:04bbb0a8825dd7591f7d6e",
+            "windows": "1:64395569451:web:9373c515e80dca9b1f7d6e"
+          }
+        }
+      }
+    }
+  }
+}
