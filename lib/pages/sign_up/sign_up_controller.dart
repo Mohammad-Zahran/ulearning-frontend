@@ -70,6 +70,10 @@ class SignUpController {
         );
         context.pop();
       }
-    } catch (e) {}
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
   }
 }
