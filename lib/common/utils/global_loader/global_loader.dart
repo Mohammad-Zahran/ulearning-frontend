@@ -7,4 +7,8 @@ class AppLoader extends _$AppLoader {
   bool build() {
     return false;
   }
+
+  void setLoaderValue(bool value) {
+    state = value;
+  }
 }

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_frontend/common/utils/global_loader/global_loader.dart';
 import 'package:ulearning_frontend/common/widgets/popup_messages.dart';
 import 'package:ulearning_frontend/pages/sign_up/notifier/register_notifier.dart';
 
@@ -52,28 +53,34 @@ class SignUpController {
       return;
     }
 
-    var context = Navigator.of(ref.context);
-    try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-      if (kDebugMode) {
-        print(credential);
-      }
+    // Show a loading indicator while the sign-up process is ongoing
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    Future.delayed(Duration(seconds: 2), () async {
+      var context = Navigator.of(ref.context);
+      try {
+        final credential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+        if (kDebugMode) {
+          print(credential);
+        }
 
-      if (credential.user != null) {
-        await credential.user?.sendEmailVerification();
-        await credential.user?.updateDisplayName(name);
-        // get server photo url
-        // set user photo url to server
-        toastInfo(
-          "An email has been sent to verify your account. Please open that email and confirm your identity.",
-        );
-        context.pop();
+        if (credential.user != null) {
+          await credential.user?.sendEmailVerification();
+          await credential.user?.updateDisplayName(name);
+          // get server photo url
+          // set user photo url to server
+          toastInfo(
+            "An email has been sent to verify your account. Please open that email and confirm your identity.",
+          );
+          context.pop();
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print(e.toString());
+        }
       }
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
-    }
+      // show the register page
+      ref.watch(appLoaderProvider.notifier).setLoaderValue(false);
+    });
   }
 }
