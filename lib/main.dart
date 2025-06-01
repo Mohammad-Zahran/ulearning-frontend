@@ -1,17 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_frontend/common/utils/app_styles.dart';
+import 'package:ulearning_frontend/firebase_options.dart';
 import 'package:ulearning_frontend/pages/sign_in/sign_in.dart';
 import 'package:ulearning_frontend/pages/sign_up/sign_up.dart';
 import 'package:ulearning_frontend/pages/welcome/welcome.dart';
 
 // ProviderScope is required to enable Riverpod. It stores all the providers and makes them accessible throughout the app.
 // This wraps your app in a scope where providers can be watched and read.
-void main() {
-  // This is the entry point of the Flutter application.
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const ProviderScope(child: MyApp()));
 }
 

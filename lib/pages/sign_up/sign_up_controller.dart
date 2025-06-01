@@ -55,32 +55,30 @@ class SignUpController {
 
     // Show a loading indicator while the sign-up process is ongoing
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
-    Future.delayed(Duration(seconds: 2), () async {
-      var context = Navigator.of(ref.context);
-      try {
-        final credential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
-        if (kDebugMode) {
-          print(credential);
-        }
-
-        if (credential.user != null) {
-          await credential.user?.sendEmailVerification();
-          await credential.user?.updateDisplayName(name);
-          // get server photo url
-          // set user photo url to server
-          toastInfo(
-            "An email has been sent to verify your account. Please open that email and confirm your identity.",
-          );
-          context.pop();
-        }
-      } catch (e) {
-        if (kDebugMode) {
-          print(e.toString());
-        }
+    var context = Navigator.of(ref.context);
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      if (kDebugMode) {
+        print(credential);
       }
-      // show the register page
-      ref.watch(appLoaderProvider.notifier).setLoaderValue(false);
-    });
+
+      if (credential.user != null) {
+        await credential.user?.sendEmailVerification();
+        await credential.user?.updateDisplayName(name);
+        // get server photo url
+        // set user photo url to server
+        toastInfo(
+          "An email has been sent to verify your account. Please open that email and confirm your identity.",
+        );
+        context.pop();
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
+    // show the register page
+    ref.watch(appLoaderProvider.notifier).setLoaderValue(false);
   }
 }
