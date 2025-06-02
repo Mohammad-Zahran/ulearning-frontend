@@ -49,6 +49,10 @@ class _SignInState extends ConsumerState<SignIn> {
                 iconName: "assets/icons/user.png",
                 hintText: "Enter your email address",
                 obscureText: false,
+                func:
+                    (value) => ref
+                        .read(signInNotifierProvider.notifier)
+                        .onEmailChange(value),
               ),
               SizedBox(height: 20),
               // password text box
@@ -57,6 +61,10 @@ class _SignInState extends ConsumerState<SignIn> {
                 iconName: "assets/icons/lock.png",
                 hintText: "Enter your password",
                 obscureText: true,
+                func:
+                    (value) => ref
+                        .read(signInNotifierProvider.notifier)
+                        .onPasswordChange(value),
               ),
               SizedBox(height: 20),
               // forget text
@@ -66,7 +74,13 @@ class _SignInState extends ConsumerState<SignIn> {
               ),
               SizedBox(height: 100),
               // app login button
-              Center(child: appButton(buttonName: "Login", isLogin: true)),
+              Center(
+                child: appButton(
+                  buttonName: "Login",
+                  isLogin: true,
+                  func: () => _controller.handleSignIn(),
+                ),
+              ),
               SizedBox(height: 20),
               // app register button
               Center(
