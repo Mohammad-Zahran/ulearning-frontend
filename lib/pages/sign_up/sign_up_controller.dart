@@ -42,8 +42,8 @@ class SignUpController {
 
     if (state.password.isEmpty ||
         password.isEmpty ||
-        state.password.isEmpty ||
-        password.isEmpty) {
+        state.rePassword.isEmpty ||
+        rePassword.isEmpty) {
       toastInfo("Your password is empty");
       return;
     }

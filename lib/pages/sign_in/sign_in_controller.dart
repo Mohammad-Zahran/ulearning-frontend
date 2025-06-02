@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_frontend/common/widgets/popup_messages.dart';
 import 'package:ulearning_frontend/pages/sign_in/notifier/sign_in_notifier.dart';
 
 class SignInController {
@@ -6,10 +8,45 @@ class SignInController {
 
   SignInController(this.ref);
 
-  void handleSignIn() {
+  Future<void> handleSignIn() async {
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
-    print("my email is $email and my password is $password");
+
+    if (state.email.isEmpty || email.isEmpty) {
+      toastInfo("Your email is empty");
+      return;
+    }
+
+    if (state.password.isEmpty || password.isEmpty) {
+      toastInfo("Your password is empty");
+      return;
+    }
+
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      if (credential.user == null) {
+        toastInfo("User not found");
+        return;
+      }
+
+      if (!credential.user!.emailVerified) {
+        toastInfo("Please verify your email before signing in");
+      }
+
+      var user = credential.user;
+      if (user != null) {
+        String? displayName = user.displayName;
+        String? email = user.email;
+        String? id = user.uid;
+        String? photoUrl = user.photoURL;
+
+        
+      }
+    } catch (e) {}
   }
 }
