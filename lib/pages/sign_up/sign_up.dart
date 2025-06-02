@@ -16,9 +16,8 @@ class SignUp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Using the registerNotifierProvider to access the state and methods of RegisterNotifier
-    final regProvider = ref.watch(registerNotifierProvider);
     final loader = ref.watch(appLoaderProvider);
-
+    final regProvider = ref.watch(registerNotifierProvider);
     return Container(
       child: SafeArea(
         child: Scaffold(
