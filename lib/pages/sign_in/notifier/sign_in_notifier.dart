@@ -18,4 +18,7 @@ class SignInNotifier extends StateNotifier<SignInState> {
 
 // This notifier is used to manage the state of the sign-in form, allowing for reactive updates
 // and interactions with the UI. It provides methods to update the email and password fields,
-final signInNotifierProvider = StateNotifierProvider((ref) => SignInNotifier());
+final signInNotifierProvider =
+    StateNotifierProvider<SignInNotifier, SignInState>(
+      (ref) => SignInNotifier(),
+    );
