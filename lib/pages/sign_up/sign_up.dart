@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_frontend/common/utils/app_colors.dart';
-import 'package:ulearning_frontend/common/utils/global_loader/global_loader.dart';
+import 'package:ulearning_frontend/common/global_loader/global_loader.dart';
 import 'package:ulearning_frontend/common/widgets/app_bar.dart';
 import 'package:ulearning_frontend/common/widgets/app_textfields.dart';
 import 'package:ulearning_frontend/common/widgets/button_widgets.dart';

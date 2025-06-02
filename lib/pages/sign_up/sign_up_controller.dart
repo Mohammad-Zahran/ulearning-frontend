@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ulearning_frontend/common/utils/global_loader/global_loader.dart';
+import 'package:ulearning_frontend/common/global_loader/global_loader.dart';
 import 'package:ulearning_frontend/common/widgets/popup_messages.dart';
 import 'package:ulearning_frontend/pages/sign_up/notifier/register_notifier.dart';
 
