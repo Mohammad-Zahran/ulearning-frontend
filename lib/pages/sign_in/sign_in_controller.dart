@@ -60,11 +60,12 @@ class SignInController {
         toastInfo("login error");
       }
     } catch (e) {}
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
-    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    // ref.read(appLoaderProvider.notifier).setLoaderValue(true);
 
-    ref.read(appLoaderProvider.notifier).setLoaderValue(false);
+    // ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 }
