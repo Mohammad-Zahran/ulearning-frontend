@@ -18,6 +18,8 @@ class SignUp extends ConsumerWidget {
     // Using the registerNotifierProvider to access the state and methods of RegisterNotifier
     final loader = ref.watch(appLoaderProvider);
     final regProvider = ref.watch(registerNotifierProvider);
+    print("User Name: ${regProvider.userName}");
+
     return Container(
       child: SafeArea(
         child: Scaffold(

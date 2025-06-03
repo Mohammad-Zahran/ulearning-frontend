@@ -5,6 +5,7 @@ import 'package:ulearning_frontend/common/widgets/image_widgets.dart';
 import 'package:ulearning_frontend/common/widgets/text_widgets.dart';
 
 Widget appTextField({
+  TextEditingController? controller,
   String text = "",
   String iconName = "",
   String hintText = "Type in your info",
@@ -35,6 +36,7 @@ Widget appTextField({
                 width: 280,
                 height: 50,
                 child: TextField(
+                  controller: controller,
                   // onChanged is used to get the value of the text field
                   onChanged: (value) => func!(value),
                   keyboardType: TextInputType.multiline,

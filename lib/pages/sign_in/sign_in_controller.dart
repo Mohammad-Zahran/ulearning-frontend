@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_frontend/common/entities/entities.dart';
 import 'package:ulearning_frontend/common/global_loader/global_loader.dart';
@@ -10,22 +11,28 @@ class SignInController {
 
   SignInController(this.ref);
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   Future<void> handleSignIn() async {
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
 
-    if (state.email.isEmpty || email.isEmpty) {
+    emailController.text = email;
+    passwordController.text = password;
+
+    if (email.isEmpty) {
       toastInfo("Your email is empty");
       return;
     }
 
-    if (state.password.isEmpty || password.isEmpty) {
+    if (password.isEmpty) {
       toastInfo("Your password is empty");
       return;
     }
 
-    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true); // show loader
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -49,23 +56,21 @@ class SignInController {
         String? id = user.uid;
         String? photoUrl = user.photoURL;
 
-        // Create a LoginRequestEntity with the user information
         LoginRequestEntity loginRequestEntity = LoginRequestEntity();
         loginRequestEntity.avatar = photoUrl;
         loginRequestEntity.name = displayName;
         loginRequestEntity.email = email;
         loginRequestEntity.open_id = id;
         loginRequestEntity.type = 1;
+
+        // Optionally, call asyncPostAllData(loginRequestEntity) here
       } else {
-        toastInfo("login error");
+        toastInfo("Login error");
       }
-    } catch (e) {}
-    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
-  }
-
-  void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
-    // ref.read(appLoaderProvider.notifier).setLoaderValue(true);
-
-    // ref.read(appLoaderProvider.notifier).setLoaderValue(false);
+    } catch (e) {
+      toastInfo("An error occurred during sign in");
+    } finally {
+      ref.read(appLoaderProvider.notifier).setLoaderValue(false); // hide loader
+    }
   }
 }

@@ -51,6 +51,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       SizedBox(height: 50),
                       // email text box
                       appTextField(
+                        controller: _controller.emailController, 
                         text: "Email",
                         iconName: "assets/icons/user.png",
                         hintText: "Enter your email address",
@@ -63,6 +64,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       SizedBox(height: 20),
                       // password text box
                       appTextField(
+                        controller: _controller.passwordController,
                         text: "Password",
                         iconName: "assets/icons/lock.png",
                         hintText: "Enter your password",
