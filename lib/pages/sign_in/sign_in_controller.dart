@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_frontend/common/entities/entities.dart';
+import 'package:ulearning_frontend/common/global_loader/global_loader.dart';
 import 'package:ulearning_frontend/common/widgets/popup_messages.dart';
 import 'package:ulearning_frontend/pages/sign_in/notifier/sign_in_notifier.dart';
 
@@ -23,6 +25,7 @@ class SignInController {
       return;
     }
 
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -40,13 +43,28 @@ class SignInController {
 
       var user = credential.user;
       if (user != null) {
+        // Extract user information
         String? displayName = user.displayName;
         String? email = user.email;
         String? id = user.uid;
         String? photoUrl = user.photoURL;
 
-        
+        // Create a LoginRequestEntity with the user information
+        LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+        loginRequestEntity.avatar = photoUrl;
+        loginRequestEntity.name = displayName;
+        loginRequestEntity.email = email;
+        loginRequestEntity.open_id = id;
+        loginRequestEntity.type = 1;
+      } else {
+        toastInfo("login error");
       }
     } catch (e) {}
+  }
+
+  void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+
+    ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 }

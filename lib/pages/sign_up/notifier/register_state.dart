@@ -4,7 +4,7 @@ class RegisterState {
   final String password;
   final String rePassword;
 
-  RegisterState({
+  const RegisterState({
     this.userName = '',
     this.email = '',
     this.password = '',
